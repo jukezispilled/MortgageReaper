@@ -48,13 +48,13 @@ function Home() {
           <HorizontalTicker duration={8000}>
             <div className='flex space-x-4 text-3xl font-semibold whitespace-nowrap'>
               <div>
-                WE BUY ALL HOMES IN ANY CONDITIONS!&nbsp;
+                WE BUY ALL HOMES IN ANY CONDITIONS!
               </div>
               <div>
-                WE BUY ALL HOMES IN ANY CONDITIONS!&nbsp;
+                WE BUY ALL HOMES IN ANY CONDITIONS!
               </div>
               <div>
-                WE BUY ALL HOMES IN ANY CONDITIONS!&nbsp;
+                WE BUY ALL HOMES IN ANY CONDITIONS!
               </div>
             </div>
           </HorizontalTicker>
