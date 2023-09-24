@@ -81,14 +81,14 @@ function App() {
               </button>
             </a>
           </div>
-          <div className='text-5xl text-white font-extrabold'>
+          <div className='text-4xl text-white font-extrabold'>
             STOP PAYING THOSE DAMN JEWS ALL THAT INTEREST
           </div>
           <div className='text-2xl text-[#e95656] font-semibold'>
             We'll buy you out of your mortgage
           </div>
           <div className='pt-2'>
-            <button onClick={scrollToElement} className="bg-red-500 w-min p-2 whitespace-nowrap rounded-md text-white font-medium">
+            <button onClick={scrollToElement} className="bg-red-500 w-min p-2 whitespace-nowrap rounded-md text-white text-xl font-semibold">
               Fuck Yea
             </button>
           </div>
