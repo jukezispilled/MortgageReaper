@@ -59,7 +59,7 @@ function App() {
                 Home
               </a>
               <a onClick={scrollToElement} className="my-2 text-gray-800 transition-colors duration-300 transform dark:text-gray-200 hover:text-red-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">
-                Contact
+                Get an Offer
               </a>
               <a className="my-2 text-gray-800 transition-colors duration-300 transform dark:text-gray-200 hover:text-red-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">
                 About
@@ -74,14 +74,14 @@ function App() {
           <div className='pb-2'>
             <a href={`tel:${phoneNumber}`}>
               <button className="bg-red-500 w-auto p-2 whitespace-nowrap rounded-md text-white font-medium">
-                <div className='flex gap-2'>
+                <div className='flex text-lg font-semibold gap-2'>
                   <div>(315) 878-1223</div>
                   <img src={icon} className="h-6 w-6" alt="icon" />
                 </div>
               </button>
             </a>
           </div>
-          <div className='text-4xl text-white font-bold'>
+          <div className='text-5xl text-white font-extrabold'>
             STOP PAYING THOSE DAMN JEWS ALL THAT INTEREST
           </div>
           <div className='text-2xl text-[#e95656] font-semibold'>
@@ -211,7 +211,7 @@ function App() {
                 <div class="flex flex-wrap justify-center mt-6 -mx-4">
                     <a href="#" class="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-red-500 dark:text-gray-300 dark:hover:text-blue-400" aria-label="Reddit"> Home </a>
                     
-                    <a href="#" class="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-red-500 dark:text-gray-300 dark:hover:text-blue-400" aria-label="Reddit"> Contact </a>
+                    <a href="#" onClick={scrollToElement} class="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-red-500 dark:text-gray-300 dark:hover:text-blue-400" aria-label="Reddit"> Get an Offer </a>
                     
                     <a href="#" class="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-red-500 dark:text-gray-300 dark:hover:text-blue-400" aria-label="Reddit"> About </a>
                 </div>
