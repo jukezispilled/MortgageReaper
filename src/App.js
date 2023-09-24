@@ -29,7 +29,7 @@ function App() {
           <div className="flex items-center justify-between">
             <a href="#">
               <div className="flex gap-1.5">
-                <h1 className="text-lg font-bold">MORTGAGE REAPER</h1>
+                <h1 className="text-xl font-bold">MORTGAGE REAPER</h1>
                 <div className="flex items-center">
                   <img src={logo} className="h-6 w-6" alt="logo" />
                 </div>
@@ -70,7 +70,7 @@ function App() {
       </nav>
       <div className='h-screen w-screen flex justify-center bg-cover bg-center relative' style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className='absolute inset-0 bg-black opacity-60'></div>
-        <div className='-mt-[20%] grid content-center text-center mx-[13%] w-screen space-y-1 z-10'>
+        <div className='-mt-[40%] grid content-center text-center mx-[13%] w-screen space-y-1 z-10'>
           <div className='pb-2'>
             <a href={`tel:${phoneNumber}`}>
               <button className="bg-red-500 w-auto p-2 whitespace-nowrap rounded-md text-white font-medium">
