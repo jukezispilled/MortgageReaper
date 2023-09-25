@@ -17,12 +17,12 @@ module.exports = async (req, res) => {
     from: 'jackw1618@gmail.com',
     to: 'jackw1618@gmail.com', // The recipient's email address
     subject: "Give me An Offer",
-    text: `
-      Full Name: ${name}
-      Address: ${address}
-      City/State/Zipcode: ${city}
-      Email: ${email}
-      Message: ${message}
+    html: `
+      <p>Full Name: ${name}</p>
+      <p>Address: ${address}</p>
+      <p>City/State/Zipcode: ${city}</p>
+      <p>Email: ${email}</p>
+      <p>Message: ${message}</p>
     `,
   };
 
