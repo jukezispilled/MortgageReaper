@@ -4,6 +4,7 @@ import Home from './Home.js';
 import Team from './Team.js';
 import Navbar from './Navbar.js';
 import Footer from './Footer.js';
+import Contact from './Contact.js';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/team" element={<Team />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
     </Router>

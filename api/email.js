@@ -2,7 +2,7 @@ import { createTransport } from 'nodemailer';
 ///const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, EMAIL_TO } = process.env;
 
 export default async (req, res) => {
-  const { name, address, citystatezip, email, message } = JSON.parse(req.body);
+  const { name, email, subject, message } = JSON.parse(req.body);
 
   // Create a transporter object using SMTP transport
   const transporter = createTransport({
@@ -20,8 +20,8 @@ export default async (req, res) => {
     subject: 'New Inquiry from Your Website',
     text: `
       Full Name: ${name}
-      Address: ${address}
-      City/State/Zipcode: ${citystatezip}
+      Address: ${email}
+      City/State/Zipcode: ${subject}
       Message: ${message}
     `,
   };
