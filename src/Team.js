@@ -1,5 +1,5 @@
 import React from 'react';
-import image from './images-1.jpg';
+import image from './0.jpg';
 
 function Team() {
     const phoneNumber0 = "3155164543";

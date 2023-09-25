@@ -1,5 +1,7 @@
 import React, { useState } from 'react'; // Import React and useState
-import './App.css';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
 import icon from './icons8-call-50.png';
 import backgroundImage from './cash-home-buyer-1.jpg';
 import { VerticalTicker, HorizontalTicker } from "react-infinite-ticker";
@@ -12,6 +14,26 @@ function Home() {
       element.scrollIntoView({ behavior: 'smooth' }); // Smoothly scroll to the element
     }
   };
+
+  const handleSubmit = async (values, actions) => {
+    try {
+      await axios.post('/api/email', values );
+
+      console.log('Email sent successfully!');
+      actions.setSubmitting(false);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      actions.setSubmitting(false);
+    }
+  };
+
+  const validationSchema = Yup.object({
+    fullName: Yup.string().required('Full Name is required'),
+    address: Yup.string().required('Address is required'),
+    cityStateZip: Yup.string().required('City/State/Zipcode is required'),
+    email: Yup.string().email('Invalid email address').required('Email is required'),
+    message: Yup.string().required('Message is required'),
+  });
 
   const phoneNumber = "3158781223";
 
@@ -62,12 +84,12 @@ function Home() {
       </div>
       <div>
       <section id="scroll-target" class="min-h-screen bg-zinc-900 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900">
-        <div class="container flex flex-col min-h-screen px-[10%] py-12 mx-auto">
+        <div class="container flex flex-col min-h-screen px-[7%] py-12 mx-auto">
             <div class="flex-1 lg:flex lg:items-center lg:-mx-6">
                 <div class="text-white lg:w-1/2 lg:mx-6">
-                    <h1 class="text-2xl font-semibold lg:text-3xl">Get an Offer</h1>
+                    <h1 class="text-3xl font-semibold lg:text-5xl">Get an Offer</h1>
 
-                    <p class="max-w-xl mt-6">Give us your details and we will usually make a cash offer in less than 48 hours.</p>
+                    <p class="max-w-xl mt-4">Give us your details and we will usually make a cash offer in less than 48 hours.</p>
 
                     <div class="mt-6 space-y-5 md:mt-8">
 
@@ -113,36 +135,85 @@ function Home() {
 
                 <div class="mt-8 lg:w-1/2 lg:mx-6">
                     <div class="w-full px-8 py-10 mx-auto overflow-hidden bg-white shadow-2xl rounded-xl dark:bg-gray-900 lg:max-w-xl">
-                        <form class="mt-1">
-                            <div class="flex-1">
-                                <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Full Name</label>
-                                <input type="text" placeholder="John Doe" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
-                            </div>
-
-                            <div class="flex-1 mt-6">
-                                <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Address</label>
-                                <input type="text" placeholder="123 Apple Street" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
-                            </div>
-
-                            <div class="flex-1 mt-6">
-                                <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">City/State/Zipcode</label>
-                                <input type="text" placeholder="Syracuse, NY 13215" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
-                            </div>
-
-                            <div class="flex-1 mt-6">
-                                <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Email address</label>
-                                <input type="email" placeholder="johndoe@example.com" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
-                            </div>
-
-                            <div class="w-full mt-6">
-                                <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Message</label>
-                                <textarea class="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" placeholder="Message"></textarea>
-                            </div>
-
-                            <button class="w-full px-6 py-3 mt-6 text-lg font-semibold tracking-wide text-white capitalize transition-colors duration-300 transform bg-red-500 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-400 focus:ring-opacity-50">
-                                give me an offer
-                            </button>
-                        </form>
+                        <Formik
+                            initialValues={{
+                                name: '',
+                                address: '',
+                                citystatezipcode: '',
+                                email: '',
+                                message: '',
+                            }}
+                            validationSchema={validationSchema}
+                            onSubmit={handleSubmit}
+                        >
+                            {({ isSubmitting, errors, touched }) => (
+                                <Form className="rounded-lg mb-10 text-xl">
+                                    <div className="mb-4">
+                                        <label className="block font-medium mb-2" htmlFor="name">
+                                            Full Name
+                                        </label>
+                                        <Field
+                                            className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
+                                            name="name"
+                                            placeholder="John Doe" 
+                                            />
+                                            {errors.name && touched.name && <div className="text-red-500">{errors.name}</div>}
+                                    </div>
+                                    <div className="mb-4">
+                                        <label className="block font-medium mb-2" htmlFor="address">
+                                            Address
+                                        </label>
+                                        <Field
+                                            className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
+                                            name="address"
+                                            placeholder="123 Apple Street" 
+                                            />
+                                            {errors.address && touched.address && <div className="text-red-500">{errors.address}</div>}
+                                    </div>
+                                    <div className="mb-4">
+                                        <label className="block font-medium mb-2" htmlFor="citystatezipcode">
+                                            City/State/Zipcode
+                                        </label>
+                                        <Field
+                                            className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
+                                            name="citystatezipcode"
+                                            placeholder="Syracuse, NY 13215"
+                                            />
+                                            {errors.citystatezipcode && touched.citystatezipcode && <div className="text-red-500">{errors.citystatezipcode}</div>}
+                                    </div>
+                                    <div className="mb-4">
+                                        <label className="block font-medium mb-2" htmlFor="email">
+                                            Email Address
+                                        </label>
+                                        <Field
+                                            className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
+                                            name="email"
+                                            placeholder="JohnDoe@gmail.com"
+                                            />
+                                            {errors.email && touched.email && <div className="text-red-500">{errors.email}</div>}
+                                    </div>
+                                    <div className="mb-4">
+                                        <label className="block font-medium mb-2" htmlFor="message">
+                                            Message
+                                        </label>
+                                        <Field
+                                            className="appearance-none h-24 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
+                                            name="message"
+                                            placeholder="Message"
+                                            component="textarea" 
+                                            />
+                                            {errors.message && touched.message && <div className="text-red-500">{errors.message}</div>}
+                                    </div>
+                                    <button
+                                        className="bg-red-500 w-full text-white shadow text-xl font-semibold py-2 px-4 rounded-lg transition ease-in duration-200"
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                    >
+                                        {isSubmitting ? 'Sending...' : 'Give Me an Offer'}
+                                    </button>
+                                </Form>
+                            )}
+                        </Formik>
                     </div>
                 </div>
             </div>

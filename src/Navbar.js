@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import logo from './icons8-reaper-48.png';
+import { useLocation } from 'react-router-dom';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false); // Initialize isOpen state
+
+    const location = useLocation();
 
     // Function to toggle the mobile menu
     const toggleMenu = () => {
@@ -15,6 +18,11 @@ function Navbar() {
           element.scrollIntoView({ behavior: 'smooth' }); // Smoothly scroll to the element
         }
     };
+
+    const correctRoute = '/';
+
+    // Check if the current route matches the correct route
+    const isAtCorrectRoute = location.pathname === correctRoute;
 
     return (
         <nav className="relative bg-slate-200 shadow dark:bg-gray-800 w-screen">
@@ -31,7 +39,7 @@ function Navbar() {
 
                     {/* Mobile menu button */}
                     <div className="flex md:hidden">
-                        <button onClick={toggleMenu} type="button" className="text-red-700 dark:text-gray-200 dark:hover:text-gray-400 focus:outline-none dark:focus:text-gray-400" aria-label="toggle menu">
+                        <button onClick={toggleMenu} type="button" className="text-red-600 dark:text-gray-200 dark:hover:text-gray-400 focus:outline-none dark:focus:text-gray-400" aria-label="toggle menu">
                             {!isOpen ? (
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 8h16M4 16h16" />
@@ -51,9 +59,15 @@ function Navbar() {
                     <a className="my-2 text-gray-800 transition-colors duration-300 transform dark:text-gray-200 hover:text-red-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="/">
                         Home
                     </a>
-                    <a onClick={scrollToElement} className="my-2 text-gray-800 transition-colors duration-300 transform dark:text-gray-200 hover:text-red-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">
-                        Get an Offer
-                    </a>
+                    {isAtCorrectRoute ? (
+                        <a onClick={scrollToElement} style={{ cursor: 'pointer' }} className="my-2 text-gray-800 transition-colors duration-300 transform dark:text-gray-200 hover:text-red-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
+                            Get an Offer
+                        </a>
+                    ) : (
+                        <a href="/" className="my-2 text-gray-800 transition-colors duration-300 transform dark:text-gray-200 hover:text-red-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
+                            Get an Offer
+                        </a>
+                    )}
                     <a href="/team" className="my-2 text-gray-800 transition-colors duration-300 transform dark:text-gray-200 hover:text-red-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
                         Our Team
                     </a>
