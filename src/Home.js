@@ -5,6 +5,7 @@ import axios from 'axios';
 import icon from './icons8-call-50.png';
 import backgroundImage from './cash-home-buyer-1.jpg';
 import { VerticalTicker, HorizontalTicker } from "react-infinite-ticker";
+import Contact from './Contact';
 
 const Home = () => {
 
@@ -14,28 +15,6 @@ const Home = () => {
       element.scrollIntoView({ behavior: 'smooth' }); // Smoothly scroll to the element
     }
   };
-
-  const handleSubmit = async (values, actions) => {
-    console.log('Form Values:', values);
-    try {
-      const res = await axios.post('https://mortgage-reaper.vercel.app/api/email', values );
-
-      console.log(res);
-      console.log('Email sent successfully!');
-      actions.setSubmitting(false);
-    } catch (error) {
-      console.error('Error sending email:', error);
-      actions.setSubmitting(false);
-    }
-  };
-
-  const validationSchema = Yup.object().shape({
-    name: Yup.string().required('Name is required'),
-    address: Yup.string().required('Address is required'),
-    city: Yup.string().required('City/State/Zipcode is required'),
-    email: Yup.string().email('Invalid email address').required('Email is required'),
-    message: Yup.string().required('Message is required'),
-  });
 
   const phoneNumber = "3158781223";
 
@@ -137,85 +116,7 @@ const Home = () => {
 
                 <div class="mt-8 lg:w-1/2 lg:mx-6">
                     <div class="w-full px-8 py-10 mx-auto overflow-hidden bg-white shadow-2xl rounded-xl dark:bg-gray-900 lg:max-w-xl">
-                        <Formik
-                            initialValues={{
-                                name: '',
-                                address: '',
-                                city: '',
-                                email: '',
-                                message: '',
-                            }}
-                            validationSchema={validationSchema}
-                            onSubmit={handleSubmit}
-                        >
-                            {({ isSubmitting, errors, touched }) => (
-                                <Form className="rounded-lg mb-10 text-xl">
-                                    <div className="mb-4">
-                                        <label className="block font-medium mb-2" htmlFor="name">
-                                            Full Name
-                                        </label>
-                                        <Field
-                                            className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tightbg-white"
-                                            name="name"
-                                            placeholder="Your Name*" 
-                                            />
-                                            {errors.name && touched.name && <div className="text-red-500">{errors.name}</div>}
-                                    </div>
-                                    <div className="mb-4">
-                                        <label className="block font-medium mb-2" htmlFor="address">
-                                            Address
-                                        </label>
-                                        <Field
-                                            className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
-                                            name="address"
-                                            placeholder="Your Email*" 
-                                            />
-                                            {errors.address && touched.address && <div className="text-red-500">{errors.address}</div>}
-                                    </div>
-                                    <div className="mb-4">
-                                        <label className="block font-medium mb-2" htmlFor="city">
-                                            City/State/Zipcode
-                                        </label>
-                                        <Field
-                                            className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
-                                            name="city"
-                                            placeholder="Syracuse, NY 13215"
-                                            />
-                                            {errors.city && touched.city && <div className="text-red-500">{errors.city}</div>}
-                                    </div>
-                                    <div className="mb-4">
-                                        <label className="block font-medium mb-2" htmlFor="email">
-                                            Email
-                                        </label>
-                                        <Field
-                                            className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
-                                            name="email"
-                                            placeholder="JohnDoe@gmail.com"
-                                            />
-                                            {errors.email && touched.email && <div className="text-red-500">{errors.email}</div>}
-                                    </div>
-                                    <div className="mb-4">
-                                        <label className="block font-medium mb-2" htmlFor="message">
-                                            Message
-                                        </label>
-                                        <Field
-                                            className="appearance-none h-24 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
-                                            name="message"
-                                            placeholder="Message*"
-                                            component="textarea" 
-                                        />
-                                        {errors.message && touched.message && <div className="text-red-500">{errors.message}</div>}
-                                    </div>
-                                    <button
-                                        className="bg-red-500 w-full text-white shadow text-xl font-semibold py-2 px-4 rounded-lg transition ease-in duration-200"
-                                        type="submit"
-                                        disabled={isSubmitting}
-                                    >
-                                        {isSubmitting ? 'Sending Details...' : 'Give Me an Offer'}
-                                    </button>
-                                </Form>
-                            )}
-                        </Formik>
+                        <Contact />
                     </div>
                 </div>
             </div>
