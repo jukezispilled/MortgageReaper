@@ -6,7 +6,7 @@ import icon from './icons8-call-50.png';
 import backgroundImage from './cash-home-buyer-1.jpg';
 import { VerticalTicker, HorizontalTicker } from "react-infinite-ticker";
 
-function Home() {
+const Home = () => {
 
   const scrollToElement = () => {
     const element = document.getElementById('scroll-target'); // Replace 'scroll-target' with the actual ID of the element you want to scroll to
@@ -16,14 +16,15 @@ function Home() {
   };
 
   const handleSubmit = async (values, actions) => {
+    console.log('Form Values:', values);
+
     try {
+
       await axios.post('https://mortgage-reaper.vercel.app/api/email', values );
 
       console.log('Email sent successfully!');
-      actions.setSubmitting(false);
     } catch (error) {
       console.error('Error sending email:', error);
-      actions.setSubmitting(false);
     }
   };
 
@@ -146,7 +147,7 @@ function Home() {
                             validationSchema={validationSchema}
                             onSubmit={handleSubmit}
                         >
-                            {({ isSubmitting, errors, touched }) => (
+                            {({errors, touched }) => (
                                 <Form className="rounded-lg mb-10 text-xl">
                                     <div className="mb-4">
                                         <label className="block font-medium mb-2" htmlFor="name">
@@ -206,10 +207,9 @@ function Home() {
                                     </div>
                                     <button
                                         className="bg-red-500 w-full text-white shadow text-xl font-semibold py-2 px-4 rounded-lg transition ease-in duration-200"
-                                        onClick={handleSubmit}
-                                        disabled={isSubmitting}
+                                        type="submit"
                                     >
-                                        {isSubmitting ? 'Sending...' : 'Give Me an Offer'}
+                                        Give Me an Offer
                                     </button>
                                 </Form>
                             )}
