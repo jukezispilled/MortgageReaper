@@ -17,21 +17,22 @@ const Home = () => {
 
   const handleSubmit = async (values, actions) => {
     console.log('Form Values:', values);
-
     try {
+      const res = await axios.post('https://mortgage-reaper.vercel.app/api/email', values );
 
-      await axios.post('https://mortgage-reaper.vercel.app/api/email', values );
-
+      console.log(res);
       console.log('Email sent successfully!');
+      actions.setSubmitting(false);
     } catch (error) {
       console.error('Error sending email:', error);
+      actions.setSubmitting(false);
     }
   };
 
-  const validationSchema = Yup.object({
-    fullName: Yup.string().required('Full Name is required'),
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required('Name is required'),
     address: Yup.string().required('Address is required'),
-    cityStateZip: Yup.string().required('City/State/Zipcode is required'),
+    city: Yup.string().required('City/State/Zipcode is required'),
     email: Yup.string().email('Invalid email address').required('Email is required'),
     message: Yup.string().required('Message is required'),
   });
@@ -140,23 +141,23 @@ const Home = () => {
                             initialValues={{
                                 name: '',
                                 address: '',
-                                citystatezipcode: '',
+                                city: '',
                                 email: '',
                                 message: '',
                             }}
                             validationSchema={validationSchema}
                             onSubmit={handleSubmit}
                         >
-                            {({errors, touched }) => (
+                            {({ isSubmitting, errors, touched }) => (
                                 <Form className="rounded-lg mb-10 text-xl">
                                     <div className="mb-4">
                                         <label className="block font-medium mb-2" htmlFor="name">
                                             Full Name
                                         </label>
                                         <Field
-                                            className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
+                                            className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tightbg-white"
                                             name="name"
-                                            placeholder="John Doe" 
+                                            placeholder="Your Name*" 
                                             />
                                             {errors.name && touched.name && <div className="text-red-500">{errors.name}</div>}
                                     </div>
@@ -167,24 +168,24 @@ const Home = () => {
                                         <Field
                                             className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
                                             name="address"
-                                            placeholder="123 Apple Street" 
+                                            placeholder="Your Email*" 
                                             />
                                             {errors.address && touched.address && <div className="text-red-500">{errors.address}</div>}
                                     </div>
                                     <div className="mb-4">
-                                        <label className="block font-medium mb-2" htmlFor="citystatezipcode">
+                                        <label className="block font-medium mb-2" htmlFor="city">
                                             City/State/Zipcode
                                         </label>
                                         <Field
                                             className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
-                                            name="citystatezipcode"
+                                            name="city"
                                             placeholder="Syracuse, NY 13215"
                                             />
-                                            {errors.citystatezipcode && touched.citystatezipcode && <div className="text-red-500">{errors.citystatezipcode}</div>}
+                                            {errors.city && touched.city && <div className="text-red-500">{errors.city}</div>}
                                     </div>
                                     <div className="mb-4">
                                         <label className="block font-medium mb-2" htmlFor="email">
-                                            Email Address
+                                            Email
                                         </label>
                                         <Field
                                             className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
@@ -200,16 +201,17 @@ const Home = () => {
                                         <Field
                                             className="appearance-none h-24 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
                                             name="message"
-                                            placeholder="Message"
+                                            placeholder="Message*"
                                             component="textarea" 
-                                            />
-                                            {errors.message && touched.message && <div className="text-red-500">{errors.message}</div>}
+                                        />
+                                        {errors.message && touched.message && <div className="text-red-500">{errors.message}</div>}
                                     </div>
                                     <button
                                         className="bg-red-500 w-full text-white shadow text-xl font-semibold py-2 px-4 rounded-lg transition ease-in duration-200"
                                         type="submit"
+                                        disabled={isSubmitting}
                                     >
-                                        Give Me an Offer
+                                        {isSubmitting ? 'Sending Details...' : 'Give Me an Offer'}
                                     </button>
                                 </Form>
                             )}
