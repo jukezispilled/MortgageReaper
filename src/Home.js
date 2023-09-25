@@ -206,7 +206,8 @@ function Home() {
                                     </div>
                                     <button
                                         className="bg-red-500 w-full text-white shadow text-xl font-semibold py-2 px-4 rounded-lg transition ease-in duration-200"
-                                        type="submit"
+                                        onClick={handleSubmit}
+                                        disabled={isSubmitting}
                                     >
                                         {isSubmitting ? 'Sending...' : 'Give Me an Offer'}
                                     </button>
