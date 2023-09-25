@@ -43,12 +43,12 @@ const Contact = () => {
                             <Form className="rounded-lg text-xl">
                                 <div className="mb-4">
                                     <label className="block font-medium mb-2" htmlFor="name">
-                                        Your Name*
+                                        Full Name
                                     </label>
                                     <Field
                                         className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tightbg-white"
                                         name="name"
-                                        placeholder="Your Name*" 
+                                        placeholder="John Doe" 
                                         />
                                         {errors.name && touched.name && <div className="text-red-500">{errors.name}</div>}
                                 </div>
@@ -59,9 +59,9 @@ const Contact = () => {
                                     <Field
                                         className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
                                         name="address"
-                                        placeholder="Subject*"
+                                        placeholder="123 Apple Street"
                                         />
-                                        {errors.subject && touched.subject && <div className="text-red-500">{errors.subject}</div>}
+                                        {errors.address && touched.address && <div className="text-red-500">{errors.address}</div>}
                                     </div>
                                     <div className="mb-4">
                                     <label className="block font-medium mb-2" htmlFor="city">
@@ -70,29 +70,29 @@ const Contact = () => {
                                     <Field
                                         className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
                                         name="city"
-                                        placeholder="Subject*"
+                                        placeholder="Syracuse, NY 13215"
                                         />
-                                        {errors.subject && touched.subject && <div className="text-red-500">{errors.subject}</div>}
+                                        {errors.city && touched.city && <div className="text-red-500">{errors.city}</div>}
                                     </div>
                                 <div className="mb-4">
                                     <label className="block font-medium mb-2" htmlFor="email">
-                                        Your Email*
+                                        Your Email
                                     </label>
                                     <Field
                                         className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
                                         name="email"
-                                        placeholder="Your Email*" 
+                                        placeholder="JohnDoe@gmail.com" 
                                         />
                                         {errors.email && touched.email && <div className="text-red-500">{errors.email}</div>}
                                 </div>
                                     <div className="mb-4">
                                         <label className="block font-medium mb-2" htmlFor="message">
-                                            Message*
+                                            Message
                                         </label>
                                         <Field
                                             className="appearance-none h-24 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
                                             name="message"
-                                            placeholder="Message*"
+                                            placeholder="Message"
                                             component="textarea" 
                                         />
                                         {errors.message && touched.message && <div className="text-red-500">{errors.message}</div>}
