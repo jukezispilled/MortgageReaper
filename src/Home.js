@@ -17,7 +17,7 @@ function Home() {
 
   const handleSubmit = async (values, actions) => {
     try {
-      await axios.post('https://reaper-azure.vercel.app/api/email', values );
+      await axios.post('https://mortgage-reaper.vercel.app/api/email', values );
 
       console.log('Email sent successfully!');
       actions.setSubmitting(false);
