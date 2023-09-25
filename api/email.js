@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
 module.exports = async (req, res) => {
-  const { name, address, city, email, message } = req.body;
+  const { name, email, subject, message } = req.body;
 
   // Create a transporter object using SMTP transport
   const transporter = nodemailer.createTransport({
@@ -17,12 +17,11 @@ module.exports = async (req, res) => {
     from: 'jackw1618@gmail.com',
     to: 'jackw1618@gmail.com', // The recipient's email address
     subject: subject,
-    html: `
-      <p>Full Name: ${name}</p>
-      <p>Address: ${address}</P>
-      <p>City/State/Zipcode: ${city}</p>
-      <p>Email: ${email}</p>
-      <p>Message: ${message}</p>
+    text: `
+      Full Name: ${name}
+      Email: ${email}
+      Subject: ${subject}
+      Message: ${message}
     `,
   };
 
