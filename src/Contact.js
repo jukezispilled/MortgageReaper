@@ -20,8 +20,9 @@ const Contact = () => {
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
+    address: Yup.string().required('Address is required'),
+    city: Yup.string().required('City/State/Zipcode is required'),
     email: Yup.string().email('Invalid email address').required('Email is required'),
-    subject: Yup.string().required('Subject is required'),
     message: Yup.string().required('Message is required'),
   });
 
@@ -30,15 +31,16 @@ const Contact = () => {
                     <Formik
                         initialValues={{
                             name: '',
+                            address: '',
+                            city: '',
                             email: '',
-                            subject: '',
                             message: '',
                         }}
                         validationSchema={validationSchema}
                         onSubmit={handleSubmit}
                     >
                         {({ isSubmitting, errors, touched }) => (
-                            <Form className="rounded-lg mb-10 text-xl">
+                            <Form className="rounded-lg text-xl">
                                 <div className="mb-4">
                                     <label className="block font-medium mb-2" htmlFor="name">
                                         Your Name*
@@ -51,6 +53,28 @@ const Contact = () => {
                                         {errors.name && touched.name && <div className="text-red-500">{errors.name}</div>}
                                 </div>
                                 <div className="mb-4">
+                                    <label className="block font-medium mb-2" htmlFor="address">
+                                        Address
+                                    </label>
+                                    <Field
+                                        className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
+                                        name="address"
+                                        placeholder="Subject*"
+                                        />
+                                        {errors.subject && touched.subject && <div className="text-red-500">{errors.subject}</div>}
+                                    </div>
+                                    <div className="mb-4">
+                                    <label className="block font-medium mb-2" htmlFor="city">
+                                        City/State/Zipcode
+                                    </label>
+                                    <Field
+                                        className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
+                                        name="city"
+                                        placeholder="Subject*"
+                                        />
+                                        {errors.subject && touched.subject && <div className="text-red-500">{errors.subject}</div>}
+                                    </div>
+                                <div className="mb-4">
                                     <label className="block font-medium mb-2" htmlFor="email">
                                         Your Email*
                                     </label>
@@ -61,17 +85,6 @@ const Contact = () => {
                                         />
                                         {errors.email && touched.email && <div className="text-red-500">{errors.email}</div>}
                                 </div>
-                                <div className="mb-4">
-                                    <label className="block font-medium mb-2" htmlFor="subject">
-                                        Subject*
-                                    </label>
-                                    <Field
-                                        className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
-                                        name="subject"
-                                            placeholder="Subject*"
-                                        />
-                                        {errors.subject && touched.subject && <div className="text-red-500">{errors.subject}</div>}
-                                    </div>
                                     <div className="mb-4">
                                         <label className="block font-medium mb-2" htmlFor="message">
                                             Message*
@@ -85,11 +98,11 @@ const Contact = () => {
                                         {errors.message && touched.message && <div className="text-red-500">{errors.message}</div>}
                                     </div>
                                     <button
-                                        className="bg-[#234d91] text-white shadow text-xl font-semibold py-2 px-4 rounded-lg transition ease-in duration-200"
+                                        className="bg-red-500 w-full text-white shadow text-xl font-semibold py-2 px-4 rounded-lg transition ease-in duration-200"
                                         type="submit"
                                         disabled={isSubmitting}
                                     >
-                                        {isSubmitting ? 'Sending...' : 'Send'}
+                                        {isSubmitting ? 'Sending Details...' : 'Get Me an Offer'}
                                     </button>
                                 </Form>
                             )}
