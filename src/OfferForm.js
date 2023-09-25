@@ -3,13 +3,11 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-const Contact = () => {
+const OfferForm = () => {
   const handleSubmit = async (values, actions) => {
-    console.log('Form Values:', values);
     try {
-      const res = await axios.post('https://mortgage-reaper.vercel.app/api/email', values );
+      await axios.post('https://mortgage-reaper.vercel.app/api/email', values );
 
-      console.log(res);
       console.log('Email sent successfully!');
       actions.setSubmitting(false);
     } catch (error) {
@@ -111,4 +109,4 @@ const Contact = () => {
     )
 }
 
-export default Contact;
+export default OfferForm;

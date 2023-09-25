@@ -5,7 +5,7 @@ import axios from 'axios';
 import icon from './icons8-call-50.png';
 import backgroundImage from './cash-home-buyer-1.jpg';
 import { VerticalTicker, HorizontalTicker } from "react-infinite-ticker";
-import Contact from './Contact';
+import OfferForm from './OfferForm';
 
 const Home = () => {
 
@@ -116,7 +116,7 @@ const Home = () => {
 
                 <div class="mt-8 lg:w-1/2 lg:mx-6">
                     <div class="w-full px-8 py-10 mx-auto overflow-hidden bg-white shadow-2xl rounded-xl dark:bg-gray-900 lg:max-w-xl">
-                        <Contact />
+                        <OfferForm />
                     </div>
                 </div>
             </div>
