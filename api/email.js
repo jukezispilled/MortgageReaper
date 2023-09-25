@@ -14,8 +14,8 @@ module.exports = async (req, res) => {
 
   // Email data
   const mailOptions = {
-    from: 'jackw1618@gmail.com',
-    to: 'jackw1618@gmail.com', // The recipient's email address
+    from: email,
+    to: 'whotfisjax@gmail.com', // The recipient's email address
     subject: "Give me An Offer",
     html: `
       <p>Full Name: ${name}</p>
