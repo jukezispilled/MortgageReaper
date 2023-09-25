@@ -7,8 +7,9 @@ const Contact = () => {
   const handleSubmit = async (values, actions) => {
     console.log('Form Values:', values);
     try {
-      await axios.post('https://mortgage-reaper.vercel.app/api/email', values );
+      const res = await axios.post('https://mortgage-reaper.vercel.app/api/email', values );
 
+      console.log(res);
       console.log('Email sent successfully!');
       actions.setSubmitting(false);
     } catch (error) {
