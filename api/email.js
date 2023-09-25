@@ -8,7 +8,7 @@ export default async (req, res) => {
   const transporter = createTransport({
     service: 'gmail',
     auth: {
-      user: 'jax46500@gmail.com',
+      user: 'jackw1618@gmail.com',
       pass: 'uqdjdatfyjqzkaoo',
     },
   });
@@ -16,7 +16,7 @@ export default async (req, res) => {
   // Email data
   const mailOptions = {
     from: email,
-    to: 'jax46500@gmail.com',
+    to: 'jackw1618@gmail.com',
     subject: 'New Inquiry from Your Website',
     text: `
       Full Name: ${name}
