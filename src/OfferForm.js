@@ -6,7 +6,7 @@ import axios from 'axios';
 const OfferForm = () => {
   const handleSubmit = async (values, actions) => {
     try {
-      await axios.post('https://mortgage-reaper.vercel.app/api/email', values );
+      await axios.post('https://mortgagereaper.com/api/email', values );
 
       console.log('Email sent successfully!');
       actions.setSubmitting(false);
