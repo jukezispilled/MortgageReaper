@@ -7,15 +7,15 @@ module.exports = async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail', // Use the email service you prefer
     auth: {
-      user: 'jackw1618@gmail.com', // Your email address
-      pass: 'rhchqsetnzgfntvz', // Your email password or an app password
+      user: 'mortgagereaperny@gmail.com', // Your email address
+      pass: 'wdukjjpzedlosafn', // Your email password or an app password
     },
   });
 
   // Email data
   const mailOptions = {
     from: email,
-    to: 'whotfisjax@gmail.com', // The recipient's email address
+    to: 'mortgagereaperny@gmail.com', // The recipient's email address
     subject: "Give me An Offer",
     html: `
       <p>Full Name: ${name}</p>

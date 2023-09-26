@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <div className="">
       <div className='h-screen w-screen flex justify-center bg-cover bg-center relative' style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <div className='absolute inset-0 bg-black opacity-60'></div>
+      <div className='absolute inset-0 bg-zinc-950 opacity-50'></div>
         <div className='-mt-[40%] lg:-mt-[20%] grid content-center text-center mx-[13%] w-screen space-y-1 z-10'>
           <div className='pb-2'>
             <a href={`tel:${phoneNumber}`}>
@@ -36,11 +36,11 @@ const Home = () => {
           <div className='text-5xl text-white font-extrabold'>
             GET CA$H FOR YOUR HOME NOW
           </div>
-          <div className='text-2xl text-[#f04646] font-semibold'>
+          <div className='text-2xl text-slate-100 font-semibold'>
             We'll buy you out of your mortgage
           </div>
           <div className='pt-2'>
-            <button onClick={scrollToElement} className="bg-red-500 w-min p-2 whitespace-nowrap rounded-md text-white text-xl font-semibold">
+            <button onClick={scrollToElement} className="bg-green-600 w-min p-2 whitespace-nowrap rounded-md text-white text-xl font-semibold">
             💸&nbsp;Get an Offer&nbsp;💸
             </button>
           </div>
@@ -95,7 +95,7 @@ const Home = () => {
                         </p>
                     </div>
 
-                    <div class="mt-6 md:mt-8">
+                    {/*<div class="mt-6 md:mt-8">
                         <h3 class="text-gray-300">Follow us</h3>
 
                         <div class="flex mt-4 -mx-3">
@@ -111,7 +111,7 @@ const Home = () => {
                                 </svg>
                             </a>
                         </div>
-                    </div>
+                      </div>*/}
                 </div>
 
                 <div class="mt-8 lg:w-1/2 lg:mx-6">

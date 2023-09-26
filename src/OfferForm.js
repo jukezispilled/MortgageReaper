@@ -24,6 +24,8 @@ const OfferForm = () => {
     message: Yup.string().required('Message is required'),
   });
 
+  const offer = <div>Get me an Offer&nbsp;💰</div>
+
   return (
                 <div>
                     <Formik
@@ -96,11 +98,11 @@ const OfferForm = () => {
                                         {errors.message && touched.message && <div className="text-red-500">{errors.message}</div>}
                                     </div>
                                     <button
-                                        className="bg-red-500 w-full text-white shadow text-xl font-semibold py-2 px-4 rounded-lg transition ease-in duration-200"
+                                        className="bg-green-600 w-full text-white shadow text-xl font-semibold py-2 px-4 rounded-lg transition ease-in duration-200"
                                         type="submit"
                                         disabled={isSubmitting}
                                     >
-                                        {isSubmitting ? 'Sending Details...' : 'Get Me an Offer'}
+                                        {isSubmitting ? 'Sending Details...' : offer}
                                     </button>
                                 </Form>
                             )}
