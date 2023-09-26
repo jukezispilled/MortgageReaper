@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
     service: 'gmail', // Use the email service you prefer
     auth: {
       user: 'mortgagereaperny@gmail.com', // Your email address
-      pass: 'wdukjjpzedlosafn', // Your email password or an app password
+      pass: 'Mrbenzer22', // Your email password or an app password
     },
   });
 
