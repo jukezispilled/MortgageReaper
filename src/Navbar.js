@@ -68,9 +68,9 @@ function Navbar() {
                             Get an Offer
                         </a>
                     )}
-                    <a href="/team" className="my-2 text-gray-800 transition-colors duration-300 transform dark:text-gray-200 hover:text-red-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
+                    {/*<a href="/team" className="my-2 text-gray-800 transition-colors duration-300 transform dark:text-gray-200 hover:text-red-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
                         Our Team
-                    </a>
+                    </a>*/}
                     </div>
                 </div>
             </div>

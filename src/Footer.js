@@ -43,7 +43,7 @@ function Footer() {
                             </a>
                         )}
                         
-                        <a href="/team" class="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-red-500 dark:text-gray-300 dark:hover:text-blue-400" aria-label="Reddit"> Our Team </a>
+                        {/*<a href="/team" class="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-red-500 dark:text-gray-300 dark:hover:text-blue-400" aria-label="Reddit"> Our Team </a>*/}
                     </div>
 
                 </div>
