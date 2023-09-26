@@ -52,6 +52,7 @@ function Footer() {
 
                 <div class="flex flex-col items-center sm:flex-row sm:justify-between">
                     <p class="text-sm text-gray-500 dark:text-gray-300">© Copyright 2023. All Rights Reserved.</p>
+                    <a href='https://freepalestinemovement.org/'>🇵🇸</a>
                 </div>
             </div>
         </footer>
