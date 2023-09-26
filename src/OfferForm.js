@@ -24,7 +24,7 @@ const OfferForm = () => {
     message: Yup.string().required('Message is required'),
   });
 
-  const offer = <div>Get me an Offer&nbsp;💰</div>
+  const offer = <div>Get Me an Offer&nbsp;💰</div>
 
   return (
                 <div>
@@ -46,7 +46,7 @@ const OfferForm = () => {
                                         Full Name
                                     </label>
                                     <Field
-                                        className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tightbg-white"
+                                        className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight bg-white"
                                         name="name"
                                         placeholder="John Doe" 
                                         />
